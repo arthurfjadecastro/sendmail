@@ -1,0 +1,6 @@
+pywin32
+Pillow 
+pandas
+openpyxl
+pyinstaller
+cx_Freeze

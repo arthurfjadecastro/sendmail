@@ -1,0 +1,25 @@
+{
+    "workbench.panel.defaultLocation": "right",
+    "workbench.startupEditor": "none",
+    "workbench.sideBar.location": "right",
+    "python.pythonPath": "/usr/bin/python3",
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Monokai",
+    "C_Cpp.updateChannel": "Insiders",
+    "update.showReleaseNotes": false,
+    "update.mode": "manual",
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "files.associations": {
+        "*.rmd": "markdown"
+    },
+    "window.zoomLevel": 1,
+    "prettier.printWidth": 80,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wrappingIndent": "same",
+    "editor.wordWrapColumn": 80
+}
