@@ -27,7 +27,7 @@ from PIL import Image, ImageFont, ImageDraw
 # Create a root TKinter
 root = Tk()
 # Create a Outlook Application
-outlook = client.Dispatch("Outlook.Application")
+
 
 # Configurate Title bar
 root.title('SR Brasília Sul - C150713')
@@ -99,6 +99,7 @@ vNome.place(x=50, y=85, width=200, height=20)
 
 
 def onClick():
+    outlook = client.Dispatch("Outlook.Application")
     message = outlook.CreateItem(0)
     message.Display()
     message.To = vMat.get()
