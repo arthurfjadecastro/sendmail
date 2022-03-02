@@ -31,23 +31,18 @@ root = Tk()
 
 # Configurate Title bar
 root.title('SR Brasília Sul - C150713')
+
+
+# Root interface initial config
 root.iconbitmap(r'sr2637.ico')
 appWidth = 600
 appHeight = 600
-
 screenWidth = root.winfo_screenwidth()
 screenHeight = root.winfo_screenheight()
-
-
 x = (screenWidth / 2) - (appWidth / 2)
 y = (screenHeight / 2) - (appHeight / 2)
-
 root.geometry(f'{appWidth}x{appHeight}+{int(x)}+{int(y)}')
-
-
 root.resizable(False, False)
-
-
 root.config(height=500, width=500)
 can = Canvas(root, bg='#ef9c00', height=400, width=420)
 can.place(relx=0.5, rely=0.5, anchor=CENTER)
@@ -98,6 +93,7 @@ vNome = Entry(labelframe)
 vNome.place(x=50, y=85, width=200, height=20)
 
 
+# On Click to display e-mail configurated
 def onClick():
     outlook = client.Dispatch("Outlook.Application")
     message = outlook.CreateItem(0)
@@ -105,26 +101,27 @@ def onClick():
     message.To = vMat.get()
     message.BCC = ass['Assinatura'][2]
     message.Subject = "Feliz Aniversário!"
+    # Transform on first name
     firstName = vNome.get().split()
 
-    # Transformar primeiro nome
-    # # Usar Matrícula em um while como destinatário
-    # # Converter data de nascimento em Brasil e verificar se há necessidade de enviar o e-mail de aniversário
     my_image = Image.open(
         "parabensind.jpg")
 
     title_text = firstName[0].capitalize() + phrases[randint(0, 2)]
 
+    # Configurate Wrap text on image
     lines = textwrap.wrap(title_text, width=36)
     y_text = 100
     font = ImageFont.truetype(
         'BebasNeue-Regular.ttf', 28)
 
+    # Configurate font to usage on signature
     fontAss = ImageFont.truetype(
         'BebasNeue-Regular.ttf', 16)
 
     image_editable = ImageDraw.Draw(my_image)
 
+    # Write text on image
     for line in lines:
         width, height = font.getsize(line)
         image_editable.text(((650 - width) / 3, y_text),
@@ -134,19 +131,23 @@ def onClick():
     image_editable.text((130, 430),
                         text=textAss, fill='white', font=fontAss, anchor="ls", stroke_width=0, stroke_fill="white")
 
+    # Save image with text and background
     my_image.save("result.png", optimize=True, quality=100)
+    # Define code html
     string = f"""
         <div>
             <img src={absolutPath}>
         </div> 
         """
+    # Apply html on body outlook
     message.HTMLBody = string
 
 
+# Define buttons to usage on inaterface
 SendMail = Button(labelframe, text='Enviar e-mail', command=onClick)
 SendMail.place(x=45, y=170, anchor=W)
 buttonQuit = Button(labelframe, text='Sair do programa', command=root.quit)
 buttonQuit.place(x=150, y=170, anchor=W)
 
-
+# Display interface
 root.mainloop()
