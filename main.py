@@ -1,12 +1,8 @@
-from cProfile import label
 from random import randint
-from turtle import back
 import win32com.client as client
 import textwrap
 import pandas as pd
 import os
-from tkinter.messagebox import showinfo
-from cx_Freeze import setup, Executable
 from tkinter import *
 from PIL import Image, ImageFont, ImageDraw
 
